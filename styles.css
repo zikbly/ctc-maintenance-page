@@ -203,7 +203,7 @@ body {
     position: absolute;
     left: 0;
     color: #3b82f6;
-    font-size: 1rem;
+    font-size: 0.6rem;
 }
 
 .service-name {
@@ -244,7 +244,7 @@ body {
     .tagline {
         font-size: 0.8rem;
         margin-top: -1.9rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
         margin-left: 6rem;
         padding: 0 1rem;
         padding-left: 0rem;
@@ -256,7 +256,7 @@ body {
     }
 
     .maintenance-text {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .maintenance-text-break { 
