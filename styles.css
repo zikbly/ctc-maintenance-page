@@ -135,7 +135,7 @@ body {
     color: #010203;
     text-align: center;
     z-index: 1;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .services-section {
@@ -177,7 +177,7 @@ body {
 }
 
 .service-title {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #60a5fa;
     margin-bottom: 1.5rem;
@@ -209,13 +209,13 @@ body {
     font-weight: 600;
     color: #000000;
     margin-bottom: 0.25rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .service-desc {
     color: #415164;
-    font-size: 1.4rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1;
 }
 
 .footer {
@@ -251,7 +251,7 @@ body {
 
     .tagline-break { 
         display: block;
-        margin-top: -0.6rem; 
+        margin-top: -0.5rem; 
     }
 
     .maintenance-text {
@@ -260,7 +260,7 @@ body {
 
     .maintenance-text-break { 
         display: block;
-        margin-top: -0.6rem; 
+        margin-top: -0.8rem; 
     }
 
     .services-grid {
