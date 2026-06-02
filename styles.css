@@ -6,6 +6,8 @@
     box-sizing: border-box;
 }
 
+ html { scroll-behavior: smooth; }
+
 body {
     font-family: 'Arial Narrow', sans-serif;
     background: #ffffff;
