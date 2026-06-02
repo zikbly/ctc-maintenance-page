@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
+:root {
+    --blue: #1a6ed8;
+    --blue-pale: #e8f1fd;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -179,6 +184,19 @@ body {
     box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
 }
 
+.service-icon {
+      width: 52px; height: 52px;
+      background: var(--blue-pale);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      transition: background 0.25s;
+    }
+
+.service-card:hover .service-icon { background: var(--blue); }
+.service-card:hover .service-icon i { color: #fff; }
+.service-icon i { color: var(--blue); font-size: 1.2rem; }
+
 .service-title {
     font-size: 1.6rem;
     font-weight: 700;
@@ -189,10 +207,10 @@ body {
     gap: 0.5rem;
 }
 
-.service-title::before {
+/* .service-title::before {
     content: '⚡';
     font-size: 1.5rem;
-}
+} */
 
 .service-item {
     margin-bottom: 1.5rem;
