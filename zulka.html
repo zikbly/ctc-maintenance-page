@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zulka Sports Arena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f6ee; --ink:#12261a; --muted:#52645a; --pitch:#0f5a34; --pitch2:#0b4528; --chalk:#f7faf2;
+  --gold:#f2b705; --line:#d3dccc; --card:#ffffff; --bar:#0f5a34; --barbg:#e4ebdd;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1710; --ink:#e9f1e4; --muted:#9db0a3; --pitch:#0f5a34; --pitch2:#0a3d23; --chalk:#f1f6ec;
+    --line:#223a2b; --card:#12241a; --bar:#3fb06d; --barbg:#1b3225; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c1710; --ink:#e9f1e4; --muted:#9db0a3; --pitch:#0f5a34; --pitch2:#0a3d23; --chalk:#f1f6ec;
+  --line:#223a2b; --card:#12241a; --bar:#3fb06d; --barbg:#1b3225; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.02;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+header{position:sticky;top:0;z-index:5;background:var(--pitch2);color:var(--chalk)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font:800 19px "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:.2px}
+nav a{margin-left:20px;text-decoration:none;font-weight:500;font-size:15px;opacity:.9}
+nav a:hover{opacity:1;text-decoration:underline}
+
+.hero{background:var(--pitch);color:var(--chalk);position:relative;overflow:hidden;padding:84px 0 96px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 90px,transparent 90px 180px)}
+.lines{position:absolute;right:-120px;top:50%;width:520px;height:520px;transform:translateY(-50%);opacity:.25}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(46px,9vw,108px);font-weight:800;max-width:11ch;letter-spacing:-1.5px}
+.hero p{max-width:46ch;font-size:19px;margin:22px 0 32px;color:#dcebdc}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--gold)}
+.btn.main{background:var(--gold);color:#1a1500}
+.btn.alt{color:var(--chalk)}
+.btn:hover{transform:translateY(-1px)}
+
+section{padding:78px 0}
+h2{font-size:clamp(34px,5vw,56px);font-weight:800;letter-spacing:-.8px}
+.lead{color:var(--muted);max-width:56ch;margin:14px 0 34px}
+
+.board{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{padding:15px 18px;text-align:left}
+th{font-size:14px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line)}
+td{border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+td.rank{font:800 22px "Bricolage Grotesque",sans-serif;width:64px;color:var(--muted)}
+td.name{font-weight:600}
+td.goals{font:800 24px "Bricolage Grotesque",sans-serif;text-align:right;width:84px;font-variant-numeric:tabular-nums}
+.barcell{width:34%}
+.bar{height:10px;background:var(--barbg);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--bar);border-radius:6px;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+tr.first{background:linear-gradient(90deg,rgba(242,183,5,.2),transparent 70%)}
+tr.first td.rank{color:#b88700}
+tr.first .bar i{background:var(--gold)}
+.badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:var(--gold);color:#1a1500;font-size:12px;font-weight:600;vertical-align:middle}
+.note{font-size:14px;color:var(--muted);margin-top:14px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px;margin-top:34px}
+.grid h3{font-size:24px;margin-bottom:8px}
+.grid p{margin:0;color:var(--muted)}
+.alt-bg{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+footer{background:var(--pitch2);color:var(--chalk);padding:56px 0 40px}
+footer h2{font-size:clamp(30px,4vw,44px)}
+footer p{color:#cfe2d1;max-width:50ch}
+.small{font-size:14px;opacity:.8;margin-top:36px}
+
+@media (max-width:640px){nav a:not(:last-child){display:none} .hero{padding:60px 0 70px} .lines{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Zulka Sports Arena</a>
+    <nav><a href="#scorers">Top scorers</a><a href="#arena">The arena</a><a href="#visit">Visit</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <svg class="lines" viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true">
+      <circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="3" fill="#fff"/><path d="M100 0v200"/>
+    </svg>
+    <div class="wrap">
+      <h1>Football lives in Dansoman.</h1>
+      <p>Zulka Sports Arena is the home of weekday/weekend leagues, nine-a-side and the goals everyone in Accra talks about on Monday.</p>
+      <div class="btns">
+        <a class="btn main" href="#scorers">See the 2026 Top Scorers</a>
+        <a class="btn alt" href="#visit">Book a pitch</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="scorers">
+    <div class="wrap">
+      <h2>2026 Top Scorers</h2>
+      <p class="lead">The 10 players who have scored the most goals at Zulka Sports Arena this year.</p>
+      <div class="board">
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Rank</th><th>Player</th><th>Team</th><th class="barcell">Share of leader's tally</th><th style="text-align:right">Goals</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="arena" class="alt-bg">
+    <div class="wrap">
+      <h2>Built for match days</h2>
+      <div class="grid">
+        <div><h3>Floodlit pitches</h3><p>Play after work. The lights keep the game going well into the night.</p></div>
+        <div><h3>Leagues and tournaments</h3><p>Weekend leagues, school cups and community tournaments run all season.</p></div>
+        <div><h3>Open to everyone</h3><p>Youth sides, office teams and casual players all have a place on the pitch.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="visit">
+  <div class="wrap">
+    <h2>Find us in Dansoman</h2>
+    <p>Zulka Sports Arena, Dansoman, Accra, Ghana. Visit the arena office to book a pitch, enter a team or ask about the next tournament.</p>
+    <p class="small">&copy; 2026 Zulka Sports Arena</p>
+  </div>
+</footer>
+
+<script>
+var players=[
+  ["John Adomako","N/A",314],
+  ["Kwame Boateng","Sahara Stars",87],
+  ["Yaw Owusu","Mamprobi United",61],
+  ["Kofi Mensah","Chorkor Rangers",43],
+  ["Emmanuel Tetteh","N/A",26],
+  ["Selasi Agbeko","Odorkor Dynamos",18],
+  ["Nana Yaa Asante","Sahara Stars",15],
+  ["Kojo Quaye","Mamprobi United",14],
+  ["Julian Osei","Chorkor Rangers",8],
+  ["Faruk Issah","N/A",7]
+];
+var max=players[0][2], html="";
+players.forEach(function(p,i){
+  html+='<tr'+(i===0?' class="first"':'')+'><td class="rank">'+(i+1)+'</td><td class="name">'+p[0]+(i===0?'<span class="badge">Golden Boot</span>':'')+'</td><td>'+p[1]+'</td><td class="barcell"><div class="bar"><i data-w="'+Math.round(p[2]/max*100)+'"></i></div></td><td class="goals">'+p[2]+'</td></tr>';
+});
+document.getElementById("rows").innerHTML=html;
+function fill(){document.querySelectorAll(".bar i").forEach(function(b){b.style.width=b.dataset.w+"%"})}
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){fill();io.disconnect()}},{threshold:.25});
+  io.observe(document.querySelector(".board"));
+}else{fill()}
+</script>
+</body>
+</html>
